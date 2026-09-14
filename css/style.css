@@ -1,0 +1,277 @@
+:root {
+  --pdfit-ink: #172033;
+  --pdfit-blue: #2563eb;
+  --pdfit-soft: #eef4ff;
+  --pdfit-background: #f5f7fb;
+  --pdfit-surface: #ffffff;
+  --pdfit-border: #d7deeb;
+  --pdfit-muted: #64748b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--pdfit-ink);
+  background: var(--pdfit-background);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.bi {
+  display: inline-block;
+  vertical-align: -0.1em;
+}
+
+.btn .bi,
+.back-link .bi {
+  margin-right: 0.35rem;
+}
+
+.theme-toggle {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+}
+
+.btn-icon-only .bi {
+  margin-right: 0;
+}
+
+body[data-theme='dark'] {
+  --pdfit-ink: #e5e7eb;
+  --pdfit-blue: #8ab4ff;
+  --pdfit-soft: #17243d;
+  --pdfit-background: #0f172a;
+  --pdfit-surface: #182235;
+  --pdfit-border: #334155;
+  --pdfit-muted: #aab7ca;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: linear-gradient(
+    145deg,
+    var(--pdfit-background) 0%,
+    var(--pdfit-soft) 100%
+  );
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.brand {
+  color: var(--pdfit-ink);
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand::before {
+  content: '\f43f';
+  margin-right: 0.35rem;
+  font-family: bootstrap-icons;
+}
+
+.theme-toggle {
+  border: 1px solid var(--pdfit-border);
+  border-radius: 999px;
+  color: var(--pdfit-ink);
+  background: var(--pdfit-surface);
+  padding: 0.45rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+.hero-card,
+.content-card {
+  background: var(--pdfit-surface);
+  border: 0;
+  border-radius: 1.25rem;
+  box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 8%);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.hero-card {
+  background: var(--pdfit-ink);
+  color: var(--pdfit-background);
+}
+
+h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.eyebrow {
+  color: #75a6ff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.content-card .eyebrow {
+  color: var(--pdfit-blue);
+}
+
+.form-control,
+.form-select {
+  border-color: var(--pdfit-border);
+  color: var(--pdfit-ink);
+  background-color: var(--pdfit-surface);
+}
+
+.form-control::placeholder {
+  color: var(--pdfit-muted);
+}
+
+.btn-workout {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.btn-workout:hover {
+  color: #fff;
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.btn-assessment {
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
+  background: transparent;
+}
+
+.btn-assessment:hover {
+  color: #111827;
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.day-panel,
+.exercise-card {
+  border: 1px solid var(--pdfit-border);
+  border-radius: 0.85rem;
+  padding: 1rem;
+  background: var(--pdfit-surface);
+}
+
+.exercise-card + .exercise-card {
+  margin-top: 0.75rem;
+}
+
+.add-exercise-button {
+  border: 0;
+  border-radius: 0.7rem;
+  color: #fff;
+  background: #16a34a;
+  box-shadow: 0 0.3rem 0.75rem rgb(22 163 74 / 25%);
+  font-weight: 700;
+  padding: 0.65rem 1rem;
+}
+
+.add-exercise-button:hover {
+  color: #fff;
+  background: #15803d;
+}
+
+.back-link {
+  color: var(--pdfit-blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.image-card {
+  border: 1px solid var(--pdfit-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--pdfit-surface);
+}
+
+.image-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+.image-card .image-actions {
+  padding: 0.6rem;
+}
+
+.pdf-output {
+  display: none;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.pdf-output.is-preview {
+  display: block;
+}
+
+.pdf-preview-heading {
+  color: var(--pdfit-ink);
+  margin-bottom: 1rem;
+}
+
+.pdf-page {
+  width: 277mm;
+  min-height: 190mm;
+  padding: 12mm;
+  color: #111;
+  background: #fff;
+}
+
+.pdf-page.portrait {
+  width: 186mm;
+  min-height: 273mm;
+}
+
+.pdf-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.pdf-table th,
+.pdf-table td {
+  border: 1px solid #b8c0ce;
+  padding: 0.45rem;
+  color: #111;
+  text-align: left;
+}
+
+.pdf-table th {
+  background: #eef2f8;
+}
+
+.pdf-image {
+  max-width: 80mm;
+  max-height: 80mm;
+  object-fit: contain;
+  margin: 4mm;
+}
+
+.blank-field {
+  display: inline-block;
+  min-width: 35mm;
+  height: 1.2em;
+  border-bottom: 1px solid #555;
+}

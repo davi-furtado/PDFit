@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avaliação física | PDFit</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app-shell">
+    <header class="app-header container">
+      <a class="brand" href="index.html">PDFit</a>
+      <button class="theme-toggle" id="theme-toggle" type="button"></button>
+    </header>
+    <main class="container py-4 py-md-5">
+      <a class="back-link" href="index.html"
+        ><i class="bi bi-arrow-left" aria-hidden="true"></i> Início</a
+      >
+      <section class="content-card mt-3">
+        <div
+          class="d-flex flex-wrap justify-content-between align-items-start gap-3"
+        >
+          <div>
+            <span class="eyebrow">Avaliação física</span>
+            <h1>Registrar avaliação</h1>
+          </div>
+          <button
+            class="btn btn-primary"
+            id="generate-assessment"
+            type="button"
+          >
+            <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Gerar PDF
+            da avaliação
+          </button>
+        </div>
+        <form id="assessment-form" class="mt-4">
+          <label class="form-label" for="assessment-student"
+            >Nome do aluno</label
+          >
+          <input class="form-control mb-4" id="assessment-student" required />
+          <h2>Medidas <small>(cm)</small></h2>
+          <div id="measurements" class="row g-3"></div>
+          <label class="form-label mt-4" for="assessment-comment"
+            >Comentário da avaliação</label
+          >
+          <textarea
+            class="form-control"
+            id="assessment-comment"
+            rows="3"
+          ></textarea>
+          <h2 class="mt-4">
+            <i class="bi bi-images" aria-hidden="true"></i> Imagens
+          </h2>
+          <input
+            class="form-control"
+            id="assessment-images"
+            type="file"
+            accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+            multiple
+          />
+          <div id="image-list" class="image-list mt-3"></div>
+        </form>
+      </section>
+    </main>
+    <div id="pdf-output" class="pdf-output"></div>
+    <script src="js/html2pdf.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      PDFit.initAssessment()
+    </script>
+  </body>
+</html>
