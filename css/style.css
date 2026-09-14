@@ -6,6 +6,8 @@
   --pdfit-surface: #ffffff;
   --pdfit-border: #d7deeb;
   --pdfit-muted: #64748b;
+  --pdfit-control-muted: #64748b;
+  --pdfit-control-muted-hover: #475569;
 }
 
 * {
@@ -48,6 +50,8 @@ body[data-theme='dark'] {
   --pdfit-surface: #182235;
   --pdfit-border: #334155;
   --pdfit-muted: #aab7ca;
+  --pdfit-control-muted: #94a3b8;
+  --pdfit-control-muted-hover: #64748b;
 }
 
 .app-shell {
@@ -86,6 +90,16 @@ body[data-theme='dark'] {
   background: var(--pdfit-surface);
   padding: 0.45rem 0.8rem;
   font-size: 0.875rem;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+.theme-toggle:hover {
+  color: var(--pdfit-blue);
+  background: var(--pdfit-soft);
+  border-color: var(--pdfit-blue);
 }
 
 .hero-card,
@@ -141,10 +155,12 @@ h2 {
   border-color: #2563eb;
 }
 
-.btn-workout:hover {
+.btn-workout:hover,
+.btn-workout:focus-visible {
   color: #fff;
   background: #1d4ed8;
   border-color: #1d4ed8;
+  box-shadow: 0 0.25rem 0.75rem rgb(37 99 235 / 25%);
 }
 
 .btn-assessment {
@@ -157,6 +173,44 @@ h2 {
   color: #111827;
   background: #f59e0b;
   border-color: #f59e0b;
+}
+
+.btn-assessment:focus-visible {
+  color: #111827;
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.btn-primary {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  color: #fff;
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.btn-outline-secondary {
+  color: var(--pdfit-control-muted);
+  border-color: var(--pdfit-control-muted);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus-visible {
+  color: #fff;
+  background: var(--pdfit-control-muted-hover);
+  border-color: var(--pdfit-control-muted-hover);
+}
+
+.btn-outline-danger:hover,
+.btn-outline-danger:focus-visible {
+  color: #fff;
+  background: #dc3545;
+  border-color: #dc3545;
 }
 
 .day-panel,
@@ -184,6 +238,15 @@ h2 {
 .add-exercise-button:hover {
   color: #fff;
   background: #15803d;
+  box-shadow: 0 0.4rem 1rem rgb(22 163 74 / 35%);
+}
+
+.add-exercise-button:focus-visible {
+  color: #fff;
+  background: #15803d;
+  border-color: #15803d;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(22 163 74 / 25%);
 }
 
 .exercise-heading-row {
@@ -196,6 +259,27 @@ h2 {
 
 .exercise-heading-row .add-exercise-button {
   flex-shrink: 0;
+}
+
+.nav-pills .nav-link {
+  color: var(--pdfit-blue);
+}
+
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link:focus-visible {
+  color: var(--pdfit-ink);
+  background: var(--pdfit-soft);
+}
+
+.nav-pills .nav-link.active {
+  color: #fff;
+  background: #2563eb;
+}
+
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-link.active:focus-visible {
+  color: #fff;
+  background: #1d4ed8;
 }
 
 .back-link {
