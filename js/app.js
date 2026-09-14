@@ -15,7 +15,9 @@
     panturrilhaDireita: 'Panturrilha direita',
     panturrilhaEsquerda: 'Panturrilha esquerda'
   }
+
   const $ = (selector) => document.querySelector(selector)
+
   const personal = () => sessionStorage.getItem(keys.personal) || ''
   const save = (key, value) =>
     sessionStorage.setItem(key, JSON.stringify(value))
@@ -26,24 +28,34 @@
       return null
     }
   }
-  const escapeHtml = (value) =>
-    String(value ?? '').replace(
-      /[&<>"']/g,
-      (char) =>
-        ({
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#039;'
-        })[char]
-    )
+
+  const escapeHtml = (value) => {
+    if (value === null || value === undefined) return ''
+    return String(value).replace(/[&<>"']/g, (char) => {
+      switch (char) {
+        case '&':
+          return '&amp;'
+        case '<':
+          return '&lt;'
+        case '>':
+          return '&gt;'
+        case '"':
+          return '&quot;'
+        case "'":
+          return '&#39;' // Protege contra quebras em atributos HTML
+        default:
+          return char
+      }
+    })
+  }
+
   const slug = (value) =>
     value
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .replace(/[^a-z0-9]+/gi, '-')
       .replace(/^-|-$/g, '')
+
   const daysFor = (split) =>
     split.split('').map((id) => ({
       identificador: id,
@@ -51,12 +63,14 @@
       comentario: '',
       exercicios: []
     }))
+
   const setupTheme = () => {
     const theme = localStorage.getItem('pdfit-theme') || 'dark'
     document.body.dataset.theme = theme
     document.documentElement.dataset.bsTheme = theme
     const toggle = $('#theme-toggle')
     if (!toggle) return
+
     toggle.innerHTML =
       theme === 'dark'
         ? '<i class="bi bi-sun" aria-hidden="true"></i>'
