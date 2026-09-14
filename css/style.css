@@ -186,6 +186,18 @@ h2 {
   background: #15803d;
 }
 
+.exercise-heading-row {
+  flex-wrap: wrap;
+}
+
+.exercise-heading-row h2 {
+  min-width: 0;
+}
+
+.exercise-heading-row .add-exercise-button {
+  flex-shrink: 0;
+}
+
 .back-link {
   color: var(--pdfit-blue);
   font-weight: 700;
@@ -224,6 +236,12 @@ h2 {
 
 .pdf-output.is-preview {
   display: block;
+}
+
+.pdf-preview-frame {
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
 }
 
 .pdf-preview-heading {
@@ -274,4 +292,73 @@ h2 {
   min-width: 35mm;
   height: 1.2em;
   border-bottom: 1px solid #555;
+}
+
+@media (max-width: 767.98px) {
+  .content-card,
+  .hero-card {
+    border-radius: 1rem;
+  }
+
+  .exercise-heading-row {
+    align-items: stretch !important;
+  }
+
+  .exercise-heading-row h2,
+  .exercise-heading-row .add-exercise-button {
+    width: 100%;
+  }
+
+  .exercise-heading-row .add-exercise-button {
+    text-align: center;
+  }
+
+  .pdf-output {
+    width: 100%;
+    margin: 1.25rem auto;
+    padding: 0.5rem;
+    overflow: hidden;
+  }
+
+  .pdf-preview-heading {
+    font-size: 1.15rem;
+  }
+
+  .pdf-preview-frame {
+    margin: 0 -0.5rem;
+    padding: 0 0.5rem 0.75rem;
+  }
+
+  .pdf-page,
+  .pdf-page.portrait {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .pdf-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .pdf-page h2 {
+    font-size: 1.05rem;
+  }
+
+  .pdf-table {
+    table-layout: fixed;
+    font-size: 0.78rem;
+  }
+
+  .pdf-table th,
+  .pdf-table td {
+    padding: 0.35rem 0.25rem;
+    overflow-wrap: anywhere;
+  }
+
+  .pdf-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0.75rem 0;
+  }
 }

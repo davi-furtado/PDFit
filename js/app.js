@@ -166,7 +166,7 @@
       editor.innerHTML = `<div class="day-panel">
         <div class="row g-3"><div class="col-md-6"><label class="form-label">Título do dia</label><input class="form-control" id="day-title" value="${escapeHtml(day.titulo)}"></div>
         <div class="col-12"><label class="form-label">Comentário do dia</label><textarea class="form-control" id="day-comment" rows="2">${escapeHtml(day.comentario)}</textarea></div></div>
-        <div class="d-flex justify-content-between align-items-center mt-4"><h2 class="mb-0"><i class="bi bi-list-check" aria-hidden="true"></i> Exercícios</h2><button class="add-exercise-button" id="add-exercise" type="button"><i class="bi bi-plus-circle" aria-hidden="true"></i> Adicionar exercício</button></div>
+        <div class="exercise-heading-row d-flex justify-content-between align-items-center mt-4"><h2 class="mb-0"><i class="bi bi-list-check" aria-hidden="true"></i> Exercícios</h2><button class="add-exercise-button" id="add-exercise" type="button"><i class="bi bi-plus-circle" aria-hidden="true"></i> Adicionar exercício</button></div>
         <div id="exercise-list" class="mt-3">${day.exercicios.map((exercise, index) => exerciseHtml(exercise, index, day.exercicios.length)).join('')}</div>
       </div>`
       $('#day-title').addEventListener(
@@ -375,7 +375,7 @@
     const generalComment = workout.comentarioGeral.trim()
       ? `<h2>Comentário geral</h2><p>${escapeHtml(workout.comentarioGeral)}</p>`
       : ''
-    output.innerHTML = `<h2 class="pdf-preview-heading">Pré-visualização do PDF</h2><div class="pdf-page"><h1>Ficha de treino</h1><p><strong>Personal trainer:</strong> ${escapeHtml(workout.personal)}<br><strong>Aluno:</strong> ${escapeHtml(workout.aluno)}<br><strong>Divisão:</strong> ${workout.divisao}</p>${days}${generalComment}</div>`
+    output.innerHTML = `<h2 class="pdf-preview-heading">Pré-visualização do PDF</h2><div class="pdf-preview-frame"><div class="pdf-page"><h1>Ficha de treino</h1><p><strong>Personal trainer:</strong> ${escapeHtml(workout.personal)}<br><strong>Aluno:</strong> ${escapeHtml(workout.aluno)}<br><strong>Divisão:</strong> ${workout.divisao}</p>${days}${generalComment}</div></div>`
     output.classList.add('is-preview')
     downloadPdf(
       output.querySelector('.pdf-page'),
@@ -385,7 +385,7 @@
   }
   function generateAssessmentPdf(data) {
     const output = $('#pdf-output')
-    output.innerHTML = `<h2 class="pdf-preview-heading">Pré-visualização do PDF</h2><div class="pdf-page portrait"><h1>Avaliação física</h1><p><strong>Personal trainer:</strong> ${escapeHtml(data.personal)}<br><strong>Aluno:</strong> ${escapeHtml(data.aluno)}</p><table class="pdf-table"><tbody>${Object.entries(
+    output.innerHTML = `<h2 class="pdf-preview-heading">Pré-visualização do PDF</h2><div class="pdf-preview-frame"><div class="pdf-page portrait"><h1>Avaliação física</h1><p><strong>Personal trainer:</strong> ${escapeHtml(data.personal)}<br><strong>Aluno:</strong> ${escapeHtml(data.aluno)}</p><table class="pdf-table"><tbody>${Object.entries(
       labels
     )
       .map(
@@ -394,7 +394,7 @@
       )
       .join(
         ''
-      )}</tbody></table><h2>Comentário</h2><p>${escapeHtml(data.comentario) || '<span class="blank-field"></span>'}</p>${data.imagens.length ? `<h2>Imagens</h2>${data.imagens.map((image, i) => `<p><strong>Imagem ${i + 1}</strong><br><img class="pdf-image" src="${image.arquivo}" alt=""></p>`).join('')}` : ''}</div>`
+      )}</tbody></table><h2>Comentário</h2><p>${escapeHtml(data.comentario) || '<span class="blank-field"></span>'}</p>${data.imagens.length ? `<h2>Imagens</h2>${data.imagens.map((image, i) => `<p><strong>Imagem ${i + 1}</strong><br><img class="pdf-image" src="${image.arquivo}" alt=""></p>`).join('')}` : ''}</div></div>`
     output.classList.add('is-preview')
     downloadPdf(
       output.querySelector('.pdf-page'),
@@ -410,4 +410,3 @@
     setupTheme
   }
 })()
-
