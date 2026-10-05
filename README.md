@@ -35,13 +35,14 @@ Facilitar o trabalho de personal trainers na criação de documentos profissiona
 - HTML5
 - CSS3
 - JavaScript
+- Vite
 - Bootstrap
 - html2pdf.js
 - GitHub Pages
 
 ### Arquitetura
 
-O PDFit é uma aplicação frontend-only, formada por páginas HTML estáticas e JavaScript puro. Não utiliza Vite ou outro framework de aplicação.
+O PDFit é uma aplicação frontend-only, formada por páginas HTML estáticas e JavaScript puro, empacotada pelo Vite como MPA (multi-page application).
 
 Não haverá:
 
@@ -60,25 +61,23 @@ Os dados serão processados localmente no navegador.
 ```text
 PDFit/
 ├── index.html                 # T01 — tela principal
-├── treino-novo.html           # T02 — dados iniciais do treino
-├── treino-editor.html         # T03 — editor de treino
+├── novo-treino.html           # T02 — dados iniciais do treino
+├── editor-treino.html         # T03 — editor de treino
 ├── avaliacao.html             # T04 — avaliação física
 ├── 404.html                   # página de erro do GitHub Pages
-├── css/
-│   ├── bootstrap.min.css      # Bootstrap local
-│   ├── bootstrap-icons.min.css # Bootstrap Icons local
-│   ├── fonts/
-│   │   └── bootstrap-icons.woff2
-│   └── style.css              # estilos da aplicação
-├── js/
-│   ├── app.js                 # fluxo, estado e geração dos documentos
-│   └── html2pdf.bundle.min.js # geração local dos PDFs
-├── LICENSE
-├── favicon.ico                # ícone da aplicação
+├── DESIGN.md                  # tokens, telas e decisões de interface
+├── public/
+│   └── favicon.ico            # ícone da aplicação
+├── src/
+│   ├── main.js                # inicialização das páginas
+│   ├── style.css              # estilos da aplicação
+│   └── *.js                   # fluxos, estado e geração dos documentos
+├── package.json               # scripts e dependências
+├── vite.config.js             # entradas MPA e configuração do deploy
 └── README.md
 ```
 
-As telas são arquivos independentes e navegam entre si por links relativos e `location.href`.
+As telas são arquivos independentes e navegam entre si por links relativos e `location.href`. O build usa `base: './'` e inclui explicitamente todas as páginas, o que permite publicar o resultado em um subcaminho do GitHub Pages.
 O estado temporário do personal e do treino é mantido em `sessionStorage`, sem persistência após o fechamento da sessão do navegador.
 O `404.html` utiliza os mesmos caminhos relativos da aplicação e não depende de scripts para montar caminhos de assets.
 
@@ -96,6 +95,7 @@ O `404.html` utiliza os mesmos caminhos relativos da aplicação e não depende 
 - Bootstrap Icons é carregado localmente e usado nos botões, navegação, ações e estados da aplicação.
 - A pré-visualização do PDF acompanha o tema da tela, mas a exportação sempre usa fundo e conteúdo claros.
 - A pré-visualização permanece visível antes do download para evitar a geração de uma página vazia.
+- Cada imagem da avaliação ocupa uma página A4 própria no PDF.
 
 ## 📱 Mapa de Telas
 

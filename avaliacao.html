@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avaliação física | PDFit</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="icon" href="favicon.ico" />
   </head>
+
   <body class="app-shell">
     <header class="app-header container">
-      <a class="brand" href="index.html">PDFit</a>
+      <a class="brand" href=".">PDFit</a>
       <button class="theme-toggle" id="theme-toggle" type="button"></button>
     </header>
+
     <main class="container py-4 py-md-5">
-      <a class="back-link" href="index.html"
-        ><i class="bi bi-arrow-left" aria-hidden="true"></i> Início</a
+      <a class="back-link" href=".">
+        <i class="bi bi-arrow-left" aria-hidden="true"></i> Início</a
       >
       <section class="content-card mt-3">
         <div
@@ -35,13 +35,23 @@
             da avaliação
           </button>
         </div>
-        <form id="assessment-form" class="mt-4">
-          <label class="form-label" for="assessment-student"
-            >Nome do aluno</label
-          >
-          <input class="form-control mb-4" id="assessment-student" required />
+
+        <form id="assessment-form" class="mt-4 needs-validation" novalidate>
+          <label class="form-label" for="assessment-student">
+            Nome do aluno
+          </label>
+          <input
+            class="form-control mb-4"
+            id="assessment-student"
+            minlength="2"
+            required
+            placeholder="Carlos da Silva Pereira"
+          />
+
           <h2>Medidas <small>(cm)</small></h2>
+          
           <div id="measurements" class="row g-3"></div>
+
           <label class="form-label mt-4" for="assessment-comment"
             >Comentário da avaliação</label
           >
@@ -50,6 +60,7 @@
             id="assessment-comment"
             rows="3"
           ></textarea>
+          
           <h2 class="mt-4">
             <i class="bi bi-images" aria-hidden="true"></i> Imagens
           </h2>
@@ -60,15 +71,14 @@
             accept=".jpg,.jpeg,.png,image/jpeg,image/png"
             multiple
           />
+
           <div id="image-list" class="image-list mt-3"></div>
         </form>
       </section>
     </main>
+
     <div id="pdf-output" class="pdf-output"></div>
-    <script src="js/html2pdf.bundle.min.js"></script>
-    <script src="js/app.js"></script>
-    <script>
-      PDFit.initAssessment()
-    </script>
+
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>

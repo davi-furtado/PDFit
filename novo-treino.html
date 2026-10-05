@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Novo treino | PDFit</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="icon" href="favicon.ico" />
   </head>
+
   <body class="app-shell">
     <header class="app-header container">
       <a class="brand" href="index.html">PDFit</a>
@@ -21,10 +20,15 @@
       <section class="content-card mt-3">
         <span class="eyebrow">Novo treino</span>
         <h1>Dados iniciais</h1>
-        <form id="new-workout-form" class="row g-3">
+        <form id="new-workout-form" class="row g-3 needs-validation" novalidate>
           <div class="col-12">
             <label class="form-label" for="student-name">Nome do aluno</label>
-            <input class="form-control" id="student-name" required />
+            <input
+              class="form-control"
+              id="student-name"
+              minlength="2"
+              required
+            />
           </div>
           <div class="col-12">
             <label class="form-label" for="split">Divisão do treino</label>
@@ -44,9 +48,7 @@
         </form>
       </section>
     </main>
-    <script src="js/app.js"></script>
-    <script>
-      PDFit.initNewWorkout()
-    </script>
+
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>

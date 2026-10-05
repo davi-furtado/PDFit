@@ -3,19 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Editor de treino | PDFit</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="icon" href="favicon.ico" />
   </head>
+
   <body class="app-shell">
     <header class="app-header container">
-      <a class="brand" href="index.html">PDFit</a>
+      <a class="brand" href=".">PDFit</a>
       <button class="theme-toggle" id="theme-toggle" type="button"></button>
     </header>
+
     <main class="container py-4 py-md-5">
-      <a class="back-link" href="treino-novo.html"
+      <a class="back-link" href="novo-treino.html"
         ><i class="bi bi-arrow-left" aria-hidden="true"></i> Dados iniciais</a
       >
       <section class="content-card mt-3">
@@ -24,7 +25,7 @@
         >
           <div>
             <span class="eyebrow">Editor de treino</span>
-            <h1 id="workout-heading"></h1>
+            <h1 id="workout-heading">Título do Treino</h1>
           </div>
           <button class="btn btn-primary" id="generate-workout" type="button">
             <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Gerar PDF
@@ -44,11 +45,9 @@
         <textarea class="form-control" id="general-comment" rows="3"></textarea>
       </section>
     </main>
+
     <div id="pdf-output" class="pdf-output"></div>
-    <script src="js/html2pdf.bundle.min.js"></script>
-    <script src="js/app.js"></script>
-    <script>
-      PDFit.initWorkoutEditor()
-    </script>
+
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
