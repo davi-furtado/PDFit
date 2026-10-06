@@ -5,6 +5,11 @@ document.querySelectorAll('[data-home]').forEach((link) => {
 })
 
 const themeToggle = document.querySelector('#theme-toggle')
+const savedTheme = localStorage.getItem('pdfit-theme')
+const preferredTheme =
+  savedTheme ||
+  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+
 const renderTheme = (theme) => {
   const isDark = theme === 'dark'
   document.body.classList.toggle('dark', isDark)
@@ -18,9 +23,11 @@ const renderTheme = (theme) => {
     : 'Mudar para modo escuro'
 }
 
-renderTheme(localStorage.getItem('pdfit-theme') || 'dark')
-themeToggle.addEventListener('click', () => {
-  const nextTheme = document.body.classList.contains('dark') ? 'light' : 'dark'
-  localStorage.setItem('pdfit-theme', nextTheme)
-  renderTheme(nextTheme)
-})
+if (themeToggle) {
+  renderTheme(preferredTheme)
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = document.body.classList.contains('dark') ? 'light' : 'dark'
+    localStorage.setItem('pdfit-theme', nextTheme)
+    renderTheme(nextTheme)
+  })
+}
