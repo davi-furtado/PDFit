@@ -26,7 +26,7 @@ export function initWorkoutEditor() {
   ) => `<div class="exercise-card" data-exercise="${index}">
       <div class="d-flex justify-content-between gap-2"><strong><i class="bi bi-dumbbell" aria-hidden="true"></i> Exercício ${index + 1}</strong><div class="btn-group btn-group-sm">
       <button type="button" class="btn btn-outline-secondary move-up" title="Mover para cima" aria-label="Mover para cima" ${index === 0 ? 'disabled' : ''}><i class="bi bi-chevron-up" aria-hidden="true"></i></button><button type="button" class="btn btn-outline-secondary move-down" title="Mover para baixo" aria-label="Mover para baixo" ${index === total - 1 ? 'disabled' : ''}><i class="bi bi-chevron-down" aria-hidden="true"></i></button><button type="button" class="btn btn-outline-danger remove-exercise" title="Remover exercício" aria-label="Remover exercício"><i class="bi bi-trash3" aria-hidden="true"></i></button></div></div>
-      <div class="row g-2 mt-1"><div class="col-md-6"><label class="form-label">Nome</label><input class="form-control exercise-name" value="${escapeHtml(exercise.nome)}" required></div><div class="col-6 col-md-2"><label class="form-label">Séries</label><input class="form-control exercise-series" type="number" min="1" value="${escapeHtml(exercise.series)}" required></div><div class="col-6 col-md-2"><label class="form-label">Repetições</label><input class="form-control exercise-reps" type="number" min="1" value="${escapeHtml(exercise.repeticoes)}" required></div><div class="col-12"><label class="form-label">Comentário</label><input class="form-control exercise-comment" value="${escapeHtml(exercise.comentario)}"></div></div></div>`
+      <div class="row g-2 mt-1"><div class="col-md-6"><label class="form-label">Nome</label><input class="form-control exercise-name" value="${escapeHtml(exercise.nome)}" required><div class="invalid-feedback">Informe o nome do exercício.</div></div><div class="col-6 col-md-2"><label class="form-label">Séries</label><input class="form-control exercise-series" type="number" min="1" value="${escapeHtml(exercise.series)}" required><div class="invalid-feedback">Informe um número válido.</div></div><div class="col-6 col-md-2"><label class="form-label">Repetições</label><input class="form-control exercise-reps" type="number" min="1" value="${escapeHtml(exercise.repeticoes)}" required><div class="invalid-feedback">Informe um número válido.</div></div><div class="col-12"><label class="form-label">Comentário</label><input class="form-control exercise-comment" value="${escapeHtml(exercise.comentario)}"></div></div></div>`
 
   const bindExerciseActions = (day, redraw) => {
     document.querySelectorAll('.exercise-card').forEach((card, index) => {
@@ -128,6 +128,7 @@ export function initWorkoutEditor() {
       const valid =
         field.value.trim() && (field.type !== 'number' || field.validity.valid)
       field.classList.toggle('is-invalid', !valid)
+      field.classList.toggle('is-valid', valid)
       return !valid
     })
 
