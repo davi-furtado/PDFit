@@ -1,18 +1,5 @@
 const pdfitBasePath = location.pathname.startsWith('/PDFit/') ? '/PDFit/' : '/'
 
-const appendStylesheet = (href) => {
-  const stylesheet = document.createElement('link')
-  stylesheet.rel = 'stylesheet'
-  stylesheet.href = `${pdfitBasePath}${href}`
-  document.head.appendChild(stylesheet)
-}
-
-const icon = document.createElement('link')
-icon.rel = 'icon'
-icon.href = `${pdfitBasePath}favicon.ico`
-document.head.appendChild(icon)
-appendStylesheet('css/404.css')
-
 document.querySelectorAll('[data-home]').forEach((link) => {
   link.href = `${pdfitBasePath}index.html`
 })

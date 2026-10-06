@@ -35,10 +35,21 @@
       const pdfitBasePath = location.pathname.startsWith('/PDFit/')
         ? '/PDFit/'
         : '/'
-      const script = document.createElement('script')
-      script.src = `${pdfitBasePath}js/404.js`
-      document.body.appendChild(script)
+      const pdfitAppendLink = (rel, href) => {
+        const link = document.createElement('link')
+        link.rel = rel
+        link.href = `${pdfitBasePath}${href}`
+        document.head.appendChild(link)
+      }
+      const pdfitAppendScript = (src) => {
+        const script = document.createElement('script')
+        script.src = `${pdfitBasePath}${src}`
+        document.body.appendChild(script)
+      }
+
+      pdfitAppendLink('icon', 'favicon.ico')
+      pdfitAppendLink('stylesheet', 'css/404.css')
+      pdfitAppendScript('js/404.js')
     </script>
   </body>
 </html>
-
