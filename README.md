@@ -78,6 +78,8 @@ PDFit/
 ```
 
 As telas são arquivos independentes e navegam entre si por links relativos e `location.href`. O build usa `base: './'` e inclui explicitamente todas as páginas, o que permite publicar o resultado em um subcaminho do GitHub Pages.
+
+O deploy é feito pelo workflow `.github/workflows/deploy-pages.yml`. Ele instala as dependências, executa `npm run build` e publica somente o diretório `dist`, evitando que o GitHub Pages tente servir diretamente os módulos-fonte de `src/`.
 O estado temporário do personal e do treino é mantido em `sessionStorage`, sem persistência após o fechamento da sessão do navegador.
 O `404.html` utiliza os mesmos caminhos relativos da aplicação e não depende de scripts para montar caminhos de assets.
 
@@ -567,9 +569,7 @@ Ao atualizar ou fechar a página, os dados poderão ser perdidos, pois não exis
 
 ## 🚀 Publicação
 
-O projeto será hospedado no GitHub Pages, permitindo que o PDFit seja acessado diretamente pelo navegador.
-
-Por ser uma aplicação estática, não será necessário configurar servidor ou banco de dados para sua execução.
+O projeto é publicado no GitHub Pages a partir do workflow de Actions. Em **Settings > Pages**, a origem deve estar configurada como **GitHub Actions**. Cada push na branch `main` gera um novo build e publica o conteúdo compilado de `dist`.
 
 ## 📌 Status do Projeto
 
