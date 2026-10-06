@@ -14,6 +14,10 @@ const readAsset = (assetPath) => {
   return fs.readFileSync(file, 'utf8')
 }
 
+const fontFiles = fs
+  .readdirSync(assetDir)
+  .filter((file) => /\.(woff2?|ttf|otf)$/.test(file))
+
 for (const file of files) {
   const htmlPath = path.join(pagesDir, file)
   let html = fs.readFileSync(htmlPath, 'utf8')
@@ -32,8 +36,16 @@ for (const file of files) {
     ''
   )
   html = html.replace(/\.\/assets\/favicon-[^"]+\.ico/g, 'favicon.ico')
+  html = html.replace(
+    /\.\/assets\/([^)"']+\.(?:woff2?|ttf|otf))/g,
+    './$1'
+  )
 
   fs.writeFileSync(htmlPath, html)
+}
+
+for (const file of fontFiles) {
+  fs.copyFileSync(path.join(assetDir, file), path.join(dist, file))
 }
 
 fs.rmSync(assetDir, { recursive: true, force: true })
