@@ -65,15 +65,16 @@ PDFit/
 ├── avaliacao.html             # T04 — avaliação física
 ├── 404.html                   # página de erro do GitHub Pages
 ├── DESIGN.md                  # tokens, telas e decisões de interface
-├── css/                       # estilos da aplicação, Bootstrap e fontes
-├── js/                        # módulos da aplicação e bibliotecas estáticas
+├── css/                       # estilos da aplicação
+├── js/                        # módulos da aplicação
+├── src/                       # assets gerados pelo npm (ignorado pelo Git)
 ├── package.json               # dependências npm e cópia de ativos
 └── README.md
 ```
 
 As páginas ficam na raiz e navegam entre si por links relativos com arquivos HTML (`novo-treino.html`, `editor-treino.html` e `avaliacao.html`). Isso mantém o projeto compatível com a publicação flat do GitHub Pages, inclusive quando o repositório é servido em `/PDFit/`.
 
-Para atualizar os arquivos estáticos fornecidos pelo npm após instalar as dependências, execute `npm run prepare-assets`. O site pode ser testado com qualquer servidor HTTP estático, por exemplo `python -m http.server`.
+Para atualizar os arquivos estáticos fornecidos pelo npm após instalar as dependências, execute `npm run prepare-assets`. Os arquivos gerados ficam em `src/` e são criados novamente pelo workflow antes do deploy. O site pode ser testado com qualquer servidor HTTP estático, por exemplo `python -m http.server`.
 O estado temporário do personal e do treino é mantido em `sessionStorage`, sem persistência após o fechamento da sessão do navegador.
 O `404.html` calcula o caminho base em tempo de execução e injeta o link correto para a home e para o script auxiliar, funcionando também em URLs inexistentes dentro de subpastas.
 
