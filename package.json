@@ -4,12 +4,17 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "prepare-assets": "node scripts/copy-assets.js"
+    "prepare-assets": "node scripts/copy-assets.js",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check ."
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "html2pdf.js": "^0.14.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14"
   }
 }
-
