@@ -18,7 +18,7 @@ const renderTheme = (theme) => {
     : '<i class="bi bi-moon-stars" aria-hidden="true"></i>'
   themeToggle.setAttribute(
     'aria-label',
-    isDark ? 'Mudar para modo claro' : 'Mudar para modo escuro',
+    isDark ? 'Mudar para modo claro' : 'Mudar para modo escuro'
   )
   themeToggle.title = isDark
     ? 'Mudar para modo claro'
@@ -28,7 +28,9 @@ const renderTheme = (theme) => {
 if (themeToggle) {
   renderTheme(preferredTheme)
   themeToggle.addEventListener('click', () => {
-    const nextTheme = document.body.classList.contains('dark') ? 'light' : 'dark'
+    const nextTheme = document.body.classList.contains('dark')
+      ? 'light'
+      : 'dark'
     localStorage.setItem('pdfit-theme', nextTheme)
     renderTheme(nextTheme)
   })
