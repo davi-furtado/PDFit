@@ -79,7 +79,7 @@ PDFit/
 
 As telas são arquivos independentes e navegam entre si por links relativos e `location.href`. O build usa `base: './'` e inclui explicitamente todas as páginas, o que permite publicar o resultado em um subcaminho do GitHub Pages.
 
-O deploy é feito pelo workflow `.github/workflows/deploy-pages.yml`. Ele instala as dependências, executa `npm run build` e publica somente o diretório `dist`, evitando que o GitHub Pages tente servir diretamente os módulos-fonte de `src/`.
+O deploy é feito pelo workflow `.github/workflows/deploy-pages.yml`. Ele instala as dependências, executa `npm run build` e publica somente o diretório `dist`, evitando que o GitHub Pages tente servir diretamente os módulos-fonte de `src/`. Durante o build, os bundles de JavaScript e CSS são incorporados diretamente nas páginas HTML para que a aplicação não dependa de caminhos de assets externos no Pages.
 O estado temporário do personal e do treino é mantido em `sessionStorage`, sem persistência após o fechamento da sessão do navegador.
 O `404.html` utiliza os mesmos caminhos relativos da aplicação e não depende de scripts para montar caminhos de assets.
 

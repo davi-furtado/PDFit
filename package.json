@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/inline-pages.js",
     "preview": "vite preview",
     "lint": "biome lint .",
     "format": "biome format --write .",
