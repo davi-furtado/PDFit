@@ -1,7 +1,7 @@
 const pdfitBasePath = location.pathname.startsWith('/PDFit/') ? '/PDFit/' : '/'
 
 document.querySelectorAll('[data-home]').forEach((link) => {
-  link.href = `${pdfitBasePath}index.html`
+  link.href = pdfitBasePath
 })
 
 const themeToggle = document.querySelector('#theme-toggle')
