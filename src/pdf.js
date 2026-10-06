@@ -1,5 +1,3 @@
-import 'html2pdf.js/dist/html2pdf.bundle.min.js'
-
 import { labels } from './constants.js'
 import { $, escapeHtml, slug } from './utils.js'
 
@@ -73,3 +71,4 @@ export function generateAssessmentPdf(data) {
     'portrait'
   )
 }
+

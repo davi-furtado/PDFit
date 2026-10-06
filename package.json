@@ -4,16 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/inline-pages.js",
-    "preview": "vite preview",
-    "lint": "biome lint src scripts router.js vite.config.js",
-    "format": "biome format --write .",
-    "check": "biome check --write src scripts router.js vite.config.js"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.5.14",
-    "vite": "^8.2.2"
+    "prepare-assets": "node scripts/copy-assets.js"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
@@ -21,3 +12,4 @@
     "html2pdf.js": "^0.14.0"
   }
 }
+

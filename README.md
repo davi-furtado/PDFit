@@ -35,14 +35,13 @@ Facilitar o trabalho de personal trainers na criação de documentos profissiona
 - HTML5
 - CSS3
 - JavaScript
-- Vite
 - Bootstrap
 - html2pdf.js
 - GitHub Pages
 
 ### Arquitetura
 
-O PDFit é uma aplicação frontend-only, formada por páginas HTML estáticas e JavaScript puro, empacotada pelo Vite como MPA (multi-page application).
+O PDFit é uma aplicação frontend-only formada por páginas HTML estáticas e módulos JavaScript executados diretamente pelo navegador. Bootstrap, Bootstrap Icons e html2pdf.js são mantidos como dependências npm e materializados nos diretórios publicados.
 
 Não haverá:
 
@@ -65,29 +64,22 @@ PDFit/
 ├── editor-treino.html         # T03 — editor de treino
 ├── avaliacao.html             # T04 — avaliação física
 ├── 404.html                   # página de erro do GitHub Pages
-├── pages/                     # templates-fonte das páginas do Vite
-│   ├── index.html
-│   ├── novo-treino.html
-│   ├── editor-treino.html
-│   ├── avaliacao.html
-│   └── 404.html
 ├── DESIGN.md                  # tokens, telas e decisões de interface
-├── public/
-│   └── favicon.ico            # ícone da aplicação
+├── css/                       # Bootstrap, Bootstrap Icons e fontes
+├── js/                        # bibliotecas estáticas e scripts auxiliares
 ├── src/
 │   ├── main.js                # inicialização das páginas
 │   ├── style.css              # estilos da aplicação
 │   └── *.js                   # fluxos, estado e geração dos documentos
-├── package.json               # scripts e dependências
-├── vite.config.js             # entradas MPA e configuração do deploy
+├── package.json               # dependências npm e cópia de ativos
 └── README.md
 ```
 
-As telas-fonte ficam em `pages/` e navegam entre si por links relativos com arquivos HTML (`novo-treino.html`, `editor-treino.html` e `avaliacao.html`). O build usa `base: './'` e copia as páginas compiladas para a raiz de `dist`, mantendo a publicação flat esperada pelo GitHub Pages.
+As páginas ficam na raiz e navegam entre si por links relativos com arquivos HTML (`novo-treino.html`, `editor-treino.html` e `avaliacao.html`). Isso mantém o projeto compatível com a publicação flat do GitHub Pages, inclusive quando o repositório é servido em `/PDFit/`.
 
-O deploy é feito pelo workflow `.github/workflows/deploy-pages.yml`. Ele instala as dependências, executa `npm run build` e publica somente o diretório `dist`, evitando que o GitHub Pages tente servir diretamente os módulos-fonte de `src/`. Durante o build, os bundles de JavaScript e CSS são incorporados diretamente nas páginas HTML para que a aplicação não dependa de caminhos de assets externos no Pages.
+Para atualizar os arquivos estáticos fornecidos pelo npm após instalar as dependências, execute `npm run prepare-assets`. O site pode ser testado com qualquer servidor HTTP estático, por exemplo `python -m http.server`.
 O estado temporário do personal e do treino é mantido em `sessionStorage`, sem persistência após o fechamento da sessão do navegador.
-O `404.html` utiliza os mesmos caminhos relativos da aplicação e não depende de scripts para montar caminhos de assets.
+O `404.html` calcula o caminho base em tempo de execução e injeta o link correto para a home e para o script auxiliar, funcionando também em URLs inexistentes dentro de subpastas.
 
 ### Decisões de implementação
 
@@ -575,7 +567,7 @@ Ao atualizar ou fechar a página, os dados poderão ser perdidos, pois não exis
 
 ## 🚀 Publicação
 
-O projeto é publicado no GitHub Pages a partir do workflow de Actions. Em **Settings > Pages**, a origem deve estar configurada como **GitHub Actions**. Cada push na branch `main` gera um novo build e publica o conteúdo compilado de `dist`.
+O projeto é publicado no GitHub Pages a partir do workflow de Actions. Em **Settings > Pages**, a origem deve estar configurada como **GitHub Actions**. Cada push na branch `main` publica a raiz estática do projeto, sem depender de um build do Vite.
 
 ## 📌 Status do Projeto
 
