@@ -1,2 +1,21 @@
-.vscode/
+# Dependencies
+node_modules/
+
+# Generated output
+dist/
+coverage/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Editor files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
 node_modules/

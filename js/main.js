@@ -19,4 +19,3 @@ if (document.querySelector('#assessment-form')) initAssessment()
 if (document.querySelector('#theme-toggle') && document.body.id === 'body') {
   setupTheme()
 }
-

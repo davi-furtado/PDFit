@@ -71,4 +71,3 @@ export function generateAssessmentPdf(data) {
     'portrait'
   )
 }
-

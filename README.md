@@ -65,12 +65,8 @@ PDFit/
 ├── avaliacao.html             # T04 — avaliação física
 ├── 404.html                   # página de erro do GitHub Pages
 ├── DESIGN.md                  # tokens, telas e decisões de interface
-├── css/                       # Bootstrap, Bootstrap Icons e fontes
-├── js/                        # bibliotecas estáticas e scripts auxiliares
-├── src/
-│   ├── main.js                # inicialização das páginas
-│   ├── style.css              # estilos da aplicação
-│   └── *.js                   # fluxos, estado e geração dos documentos
+├── css/                       # estilos da aplicação, Bootstrap e fontes
+├── js/                        # módulos da aplicação e bibliotecas estáticas
 ├── package.json               # dependências npm e cópia de ativos
 └── README.md
 ```
