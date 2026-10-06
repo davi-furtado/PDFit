@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PDFit - Ferramenta para geração de PDFs de avaliações físicas e planilhas de treino."
+    />
+
+    <title>PDFit | Início</title>
+
+    <link rel="icon" href="favicon.ico" />
+  </head>
+
+  <body class="app-shell">
+    <header class="app-header container">
+      <a class="brand" href="index.html">PDFit</a>
+      <button class="theme-toggle" id="theme-toggle" type="button"></button>
+    </header>
+
+    <main class="container py-4 py-md-5">
+      <section class="hero-card">
+        <span class="eyebrow">PDFit</span>
+        <h1>Treinos e avaliações físicas em PDF</h1>
+        <p class="lead">
+          Crie documentos profissionais diretamente no navegador.
+        </p>
+      </section>
+
+      <section class="content-card mt-4">
+        <h2>Começar</h2>
+
+        <form id="personal-form" class="row g-3 needs-validation" novalidate>
+          <div class="col-12 col-lg-7">
+            <label class="form-label" for="personal-name"
+              >Nome do personal trainer
+            </label>
+            <input
+              class="form-control form-control-lg"
+              id="personal-name"
+              minlength="2"
+              required
+            />
+          </div>
+          <div class="col-12 col-lg-5 d-flex flex-column flex-sm-row gap-2">
+            <button class="btn btn-workout" type="submit">
+              <i class="bi bi-clipboard2-pulse" aria-hidden="true"></i> Criar
+              treino
+            </button>
+            <button
+              class="btn btn-assessment"
+              type="button"
+              id="assessment-link"
+            >
+              <i class="bi bi-person-vcard" aria-hidden="true"></i> Avaliação
+              física
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="../src/main.js"></script>
+  </body>
+</html>
+

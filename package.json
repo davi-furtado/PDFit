@@ -7,9 +7,9 @@
     "dev": "vite",
     "build": "vite build && node scripts/inline-pages.js",
     "preview": "vite preview",
-    "lint": "biome lint .",
+    "lint": "biome lint src scripts router.js vite.config.js",
     "format": "biome format --write .",
-    "check": "biome check --write ."
+    "check": "biome check --write src scripts router.js vite.config.js"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",

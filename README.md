@@ -65,6 +65,12 @@ PDFit/
 ├── editor-treino.html         # T03 — editor de treino
 ├── avaliacao.html             # T04 — avaliação física
 ├── 404.html                   # página de erro do GitHub Pages
+├── pages/                     # templates-fonte das páginas do Vite
+│   ├── index.html
+│   ├── novo-treino.html
+│   ├── editor-treino.html
+│   ├── avaliacao.html
+│   └── 404.html
 ├── DESIGN.md                  # tokens, telas e decisões de interface
 ├── public/
 │   └── favicon.ico            # ícone da aplicação
@@ -77,7 +83,7 @@ PDFit/
 └── README.md
 ```
 
-As telas são arquivos independentes e navegam entre si por links relativos e `location.href`. O build usa `base: './'` e inclui explicitamente todas as páginas, o que permite publicar o resultado em um subcaminho do GitHub Pages.
+As telas-fonte ficam em `pages/` e navegam entre si por links relativos com arquivos HTML (`novo-treino.html`, `editor-treino.html` e `avaliacao.html`). O build usa `base: './'` e copia as páginas compiladas para a raiz de `dist`, mantendo a publicação flat esperada pelo GitHub Pages.
 
 O deploy é feito pelo workflow `.github/workflows/deploy-pages.yml`. Ele instala as dependências, executa `npm run build` e publica somente o diretório `dist`, evitando que o GitHub Pages tente servir diretamente os módulos-fonte de `src/`. Durante o build, os bundles de JavaScript e CSS são incorporados diretamente nas páginas HTML para que a aplicação não dependa de caminhos de assets externos no Pages.
 O estado temporário do personal e do treino é mantido em `sessionStorage`, sem persistência após o fechamento da sessão do navegador.

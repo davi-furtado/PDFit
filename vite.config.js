@@ -10,14 +10,20 @@ export default defineConfig(({ command }) => {
     build: {
       rollupOptions: {
         input: {
-          index: path.resolve(import.meta.dirname, 'index.html'),
-          'novo-treino': path.resolve(import.meta.dirname, 'novo-treino.html'),
+          index: path.resolve(import.meta.dirname, 'pages/index.html'),
+          'novo-treino': path.resolve(
+            import.meta.dirname,
+            'pages/novo-treino.html'
+          ),
           'editor-treino': path.resolve(
             import.meta.dirname,
-            'editor-treino.html'
+            'pages/editor-treino.html'
           ),
-          avaliacao: path.resolve(import.meta.dirname, 'avaliacao.html'),
-          404: path.resolve(import.meta.dirname, '404.html')
+          avaliacao: path.resolve(
+            import.meta.dirname,
+            'pages/avaliacao.html'
+          ),
+          404: path.resolve(import.meta.dirname, 'pages/404.html')
         }
       }
     },

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PDFit - Página não encontrada."
+    />
+    <title>Página não encontrada | PDFit</title>
+    <script>
+      const pdfitBasePath = location.pathname.startsWith('/PDFit/')
+        ? '/PDFit/'
+        : '/'
+      const icon = document.createElement('link')
+      icon.rel = 'icon'
+      icon.href = `${pdfitBasePath}favicon.ico`
+      document.head.appendChild(icon)
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #172033;
+        --blue: #2563eb;
+        --soft: #eef4ff;
+        --background: #f5f7fb;
+        --surface: #fff;
+        --border: #d7deeb;
+        --muted: #64748b;
+        --button-text: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background: linear-gradient(145deg, var(--background), var(--soft));
+        font-family:
+          system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+      }
+
+      .brand {
+        color: inherit;
+        font-size: 1.25rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--ink);
+        background: var(--surface);
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .theme-icon {
+        width: 1.1rem;
+        height: 1.1rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      main {
+        display: grid;
+        min-height: calc(100vh - 4.5rem);
+        place-items: center;
+        padding: 2rem 1.5rem 4rem;
+      }
+
+      .card {
+        width: min(100%, 620px);
+        padding: clamp(2rem, 7vw, 4rem);
+        border: 1px solid var(--border);
+        border-radius: 1.25rem;
+        background: var(--surface);
+        box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 8%);
+        text-align: center;
+      }
+
+      .code {
+        margin: 0;
+        color: var(--blue);
+        font-size: clamp(4rem, 15vw, 8rem);
+        font-weight: 800;
+        line-height: 0.95;
+      }
+
+      h1 {
+        margin: 1rem 0 0.75rem;
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+      }
+
+      p {
+        margin: 0 auto 1.75rem;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      .button {
+        display: inline-block;
+        border-radius: 0.5rem;
+        color: var(--button-text);
+        background: var(--blue);
+        padding: 0.75rem 1.25rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        background: #1d4ed8;
+      }
+
+      body.dark {
+        color-scheme: dark;
+        --ink: #e5e7eb;
+        --blue: #8ab4ff;
+        --soft: #17243d;
+        --background: #0f172a;
+        --surface: #182235;
+        --border: #334155;
+        --muted: #aab7ca;
+        --button-text: #0f172a;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="brand" data-home href="index.html">PDFit</a>
+      <button
+        class="theme-toggle"
+        id="theme-toggle"
+        type="button"
+        aria-label="Mudar para modo claro"
+        title="Mudar para modo claro"
+      ></button>
+    </header>
+    <main>
+      <section class="card" aria-labelledby="not-found-title">
+        <p class="code" aria-hidden="true">404</p>
+        <h1 id="not-found-title">Página não encontrada</h1>
+        <p>
+          O endereço acessado não existe ou foi movido. Volte para o início
+          para continuar criando seus PDFs.
+        </p>
+        <a class="button" data-home href="index.html">Voltar para o início</a>
+      </section>
+    </main>
+    <script>
+      document.querySelectorAll('[data-home]').forEach((link) => {
+        link.href = `${pdfitBasePath}index.html`
+      })
+
+      const themeToggle = document.querySelector('#theme-toggle')
+      const storedTheme = localStorage.getItem('pdfit-theme') || 'dark'
+      const renderThemeToggle = (theme) => {
+        const isDark = theme === 'dark'
+        themeToggle.innerHTML = isDark
+          ? '<svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>'
+          : '<svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path></svg>'
+        themeToggle.setAttribute(
+          'aria-label',
+          isDark ? 'Mudar para modo claro' : 'Mudar para modo escuro'
+        )
+        themeToggle.title = isDark
+          ? 'Mudar para modo claro'
+          : 'Mudar para modo escuro'
+      }
+
+      document.body.classList.toggle('dark', storedTheme === 'dark')
+      renderThemeToggle(storedTheme)
+      themeToggle.addEventListener('click', () => {
+        const nextTheme = document.body.classList.contains('dark')
+          ? 'light'
+          : 'dark'
+        document.body.classList.toggle('dark', nextTheme === 'dark')
+        localStorage.setItem('pdfit-theme', nextTheme)
+        renderThemeToggle(nextTheme)
+      })
+    </script>
+  </body>
+</html>
