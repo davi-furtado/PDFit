@@ -36,6 +36,16 @@ jobs:
       - name: Prepare static assets
         run: npm run prepare-assets
 
+      - name: Prepare Pages artifact
+        run: |
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='_site' \
+            ./ _site/
+          find _site/src -type f -print
+
       - name: Remove dependencies from artifact
         run: rm -rf node_modules
 
@@ -45,7 +55,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
