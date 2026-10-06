@@ -32,22 +32,23 @@
       </section>
     </main>
     <script>
-      const pdfitBasePath = location.pathname.startsWith('/PDFit/')
+      const pdfitAssetBasePath = location.pathname.startsWith('/PDFit/')
         ? '/PDFit/'
         : '/'
       const pdfitAppendLink = (rel, href) => {
         const link = document.createElement('link')
         link.rel = rel
-        link.href = `${pdfitBasePath}${href}`
+        link.href = `${pdfitAssetBasePath}${href}`
         document.head.appendChild(link)
       }
       const pdfitAppendScript = (src) => {
         const script = document.createElement('script')
-        script.src = `${pdfitBasePath}${src}`
+        script.src = `${pdfitAssetBasePath}${src}`
         document.body.appendChild(script)
       }
 
       pdfitAppendLink('icon', 'favicon.ico')
+      pdfitAppendLink('stylesheet', 'css/bootstrap-icons.min.css')
       pdfitAppendLink('stylesheet', 'css/404.css')
       pdfitAppendScript('js/404.js')
     </script>

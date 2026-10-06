@@ -13,7 +13,9 @@ const preferredTheme =
 const renderTheme = (theme) => {
   const isDark = theme === 'dark'
   document.body.classList.toggle('dark', isDark)
-  themeToggle.textContent = isDark ? '☀' : '☾'
+  themeToggle.innerHTML = isDark
+    ? '<i class="bi bi-sun-fill" aria-hidden="true"></i>'
+    : '<i class="bi bi-moon-stars-fill" aria-hidden="true"></i>'
   themeToggle.setAttribute(
     'aria-label',
     isDark ? 'Mudar para modo claro' : 'Mudar para modo escuro',
