@@ -3,34 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="PDFit - Página não encontrada."
-    />
+    <meta name="description" content="PDFit - Página não encontrada." />
     <title>Página não encontrada | PDFit</title>
+
+    <script>
+      const pdfitTheme = localStorage.getItem('pdfit-theme') || 'dark'
+      document.documentElement.dataset.bsTheme = pdfitTheme
+      document.documentElement.style.colorScheme = pdfitTheme
+    </script>
   </head>
-  <body>
-    <header>
+
+  <body class="app-shell d-flex flex-column">
+    <header class="app-header container">
       <a class="brand" data-home href=".">PDFit</a>
-      <button
-        class="theme-toggle"
-        id="theme-toggle"
-        type="button"
-        aria-label="Mudar para modo claro"
-        title="Mudar para modo claro"
-      ></button>
+      <button class="theme-toggle" id="theme-toggle" type="button"></button>
     </header>
-    <main>
-      <section class="card" aria-labelledby="not-found-title">
-        <p class="code" aria-hidden="true">404</p>
-        <h1 id="not-found-title">Página não encontrada</h1>
-        <p>
+    <main
+      class="container flex-grow-1 d-flex align-items-center justify-content-center py-4 py-md-5"
+    >
+      <section
+        class="content-card text-center w-100"
+        style="max-width: 620px"
+        aria-labelledby="not-found-title"
+      >
+        <p
+          class="display-1 fw-bold mb-0"
+          style="color: var(--pdfit-blue)"
+          aria-hidden="true"
+        >
+          404
+        </p>
+        <h1 id="not-found-title" class="fs-2 mt-2 mb-3">
+          Página não encontrada
+        </h1>
+        <p class="text-body-secondary mb-4">
           O endereço acessado não existe ou foi movido. Volte para o início
           para continuar criando seus PDFs.
         </p>
-        <a class="button" data-home href=".">Voltar para o início</a>
+        <a class="btn btn-primary" data-home href=".">Voltar para o início</a>
       </section>
     </main>
+
     <script>
       const pdfitAssetBasePath = location.pathname.startsWith('/PDFit/')
         ? '/PDFit/'
@@ -48,9 +61,17 @@
       }
 
       pdfitAppendLink('icon', 'favicon.ico')
+      pdfitAppendLink('stylesheet', 'src/css/bootstrap.min.css')
       pdfitAppendLink('stylesheet', 'src/css/bootstrap-icons.min.css')
-      pdfitAppendLink('stylesheet', 'css/404.css')
-      pdfitAppendScript('js/404.js')
+      pdfitAppendLink('stylesheet', 'css/style.css')
+
+      document.querySelectorAll('[data-home]').forEach((link) => {
+        link.href = pdfitAssetBasePath
+      })
+
+      import(`${pdfitAssetBasePath}js/theme.js`).then(({ setupTheme }) => {
+        setupTheme()
+      })
     </script>
   </body>
 </html>
