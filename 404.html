@@ -4,13 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="PDFit - Página não encontrada." />
-    <title>Página não encontrada | PDFit</title>
 
-    <script>
-      const pdfitTheme = localStorage.getItem('pdfit-theme') || 'dark'
-      document.documentElement.dataset.bsTheme = pdfitTheme
-      document.documentElement.style.colorScheme = pdfitTheme
-    </script>
+    <title>Página não encontrada | PDFit</title>
   </head>
 
   <body class="app-shell d-flex flex-column">
@@ -69,9 +64,7 @@
         link.href = pdfitAssetBasePath
       })
 
-      import(`${pdfitAssetBasePath}js/theme.js`).then(({ setupTheme }) => {
-        setupTheme()
-      })
+      pdfitAppendScript(`${pdfitAssetBasePath}js/theme.js`)
     </script>
   </body>
 </html>
