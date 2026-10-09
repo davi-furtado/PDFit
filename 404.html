@@ -49,9 +49,13 @@
         link.href = `${pdfitAssetBasePath}${href}`
         document.head.appendChild(link)
       }
-      const pdfitAppendScript = (src) => {
+      const pdfitAppendThemeScript = () => {
         const script = document.createElement('script')
-        script.src = `${pdfitAssetBasePath}${src}`
+        script.type = 'module'
+        script.textContent = `
+          import { setupTheme } from '${pdfitAssetBasePath}js/theme.js'
+          setupTheme()
+        `
         document.body.appendChild(script)
       }
 
@@ -64,7 +68,7 @@
         link.href = pdfitAssetBasePath
       })
 
-      pdfitAppendScript(`${pdfitAssetBasePath}js/theme.js`)
+      pdfitAppendThemeScript()
     </script>
   </body>
 </html>
